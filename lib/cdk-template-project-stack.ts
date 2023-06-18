@@ -3,6 +3,7 @@ import { Construct } from 'constructs'
 import { Lambda } from './constructs/Lambda'
 import { Runtime } from 'aws-cdk-lib/aws-lambda'
 import { DynamoTable } from './constructs/Dynamo'
+import { ApiGateway } from './constructs/ApiGateway'
 
 export class CdkTemplateProjectStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
@@ -30,5 +31,8 @@ export class CdkTemplateProjectStack extends cdk.Stack {
         TABLE_NAME: table.tableName
       }
     })
+
+    const api = new ApiGateway(this)
+    api.addIntergration("GET", "/users", userLambda)
   }
 }
