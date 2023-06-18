@@ -9,7 +9,7 @@
     "watch": "tsc -w",
     "test": "jest",
     "cdk": "cdk",
-    "format": "prettier --write lib/**/*.ts bin/**/*.ts test/**/*.test.ts"
+    "format": "prettier --write lib/**/*.ts bin/**/*.ts tests/**/*.test.ts"
   },
   "devDependencies": {
     "@types/jest": "^29.5.1",
