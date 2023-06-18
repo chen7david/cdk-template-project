@@ -11,16 +11,17 @@ import { Construct } from 'constructs'
 export class ApiGateway extends RestApi {
   constructor(scope: Construct) {
     super(scope, 'ApiGateway', {
-      restApiName: 'todo-app'
-      //   deployOptions: {
-      //     accessLogDestination: new LogGroupLogDestination(
-      //       new LogGroup(scope, 'ApiLogGroup', {
-      //         logGroupName: 'api_gateway',
-      //         retention: RetentionDays.ONE_DAY,
-      //         removalPolicy: RemovalPolicy.DESTROY
-      //       })
-      //     )
-      //   }
+      restApiName: 'todo-app',
+      deployOptions: {
+        // Configure LogGroup ARN https://www.youtube.com/watch?v=ayDevCKdyUw&ab_channel=AmazonWebServices
+        accessLogDestination: new LogGroupLogDestination(
+          new LogGroup(scope, 'ApiLogGroup', {
+            logGroupName: 'api_gateway',
+            retention: RetentionDays.ONE_DAY,
+            removalPolicy: RemovalPolicy.DESTROY
+          })
+        )
+      }
     })
   }
 
