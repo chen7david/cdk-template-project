@@ -2,14 +2,14 @@ import { Construct } from 'constructs'
 import { FunctionProps, Runtime, Function, Code } from 'aws-cdk-lib/aws-lambda'
 import * as path from 'path'
 
-interface CustomProps extends FunctionProps {
+interface ExtendedProps extends FunctionProps {
   name: string
   folder: string
   handler: string
 }
 
 export class Lambda extends Function {
-  constructor(scope: Construct, id: string, props?: Partial<CustomProps>) {
+  constructor(scope: Construct, id: string, props?: Partial<ExtendedProps>) {
     super(scope, id, {
       functionName: `project-${props?.name || 'name'}`,
       runtime: Runtime.NODEJS_18_X,
