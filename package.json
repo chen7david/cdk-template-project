@@ -6,10 +6,11 @@
   },
   "scripts": {
     "build": "rm -rf dist && rm -fr cdk.out && yarn format && tsc && cdk synth",
+    "format": "prettier --write lib/**/*.ts bin/**/*.ts tests/**/*.test.ts",
+    "deploy": "yarn build && yarn deploy",
     "watch": "tsc -w",
     "test": "jest",
-    "cdk": "cdk",
-    "format": "prettier --write lib/**/*.ts bin/**/*.ts tests/**/*.test.ts"
+    "cdk": "cdk"
   },
   "devDependencies": {
     "@types/jest": "^29.5.1",

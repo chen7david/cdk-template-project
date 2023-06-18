@@ -17,7 +17,8 @@ export class Lambda extends CdkLambda.Function {
       code: CdkLambda.Code.fromAsset(
         path.join(__dirname, `../../dist/${props?.folder || 'handlers'}`)
       ),
-      handler: `${props?.handler || 'index.handler'}`
+      handler: `${props?.handler || 'index.handler'}`,
+      ...props
     })
   }
 }
