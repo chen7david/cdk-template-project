@@ -1,6 +1,12 @@
-import { Schema,  } from 'dynamoose'
-import { CompositeKeySchemaAttributes, tableOptions } from './default.schema'
+import dynamoose from './../lib/clients/dynamoose'
+import { CompositeKeySchemaAttributes, ICommonAttributes, tableOptions } from './common.schema'
 import { SchemaDefinition } from 'dynamoose/dist/Schema'
+
+export interface IUserSchema extends ICommonAttributes{
+    username: string
+    email: string
+    password: string
+}
 
 const schema: SchemaDefinition = {
     ...CompositeKeySchemaAttributes,
@@ -18,4 +24,4 @@ const schema: SchemaDefinition = {
     },
 }
 
-export const UserSchema = new Schema(schema, tableOptions)
+export const UserSchema = new dynamoose.Schema(schema, tableOptions)

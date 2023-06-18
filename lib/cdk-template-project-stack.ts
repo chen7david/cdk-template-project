@@ -21,16 +21,18 @@ export class CdkTemplateProjectStack extends cdk.Stack {
         TABLE_NAME: table.tableName
       }
     })
-
+    
     const storeLambda = new Lambda(this, 'StoreLambdaId', {
       name: 'store',
       folder: 'handlers/stores',
       handler: 'get-all.handler',
-      runtime: Runtime.NODEJS_14_X,
       environment: {
         TABLE_NAME: table.tableName
       }
     })
+
+    // Assign read write permissions to lambdas
+    table.grantReadWriteData(userLambda)
 
     const api = new ApiGateway(this)
     api.addIntergration('GET', '/users', userLambda)
