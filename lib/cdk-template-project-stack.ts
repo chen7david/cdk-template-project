@@ -13,7 +13,7 @@ export class CdkTemplateProjectStack extends cdk.Stack {
       name: 'example-table'
     })
 
-    const userLambda = new Lambda(this, 'UserLambdaId',{
+    const userLambda = new Lambda(this, 'UserLambdaId', {
       name: 'user',
       folder: 'handlers/users',
       handler: 'get-all.handler',
@@ -22,7 +22,7 @@ export class CdkTemplateProjectStack extends cdk.Stack {
       }
     })
 
-    const storeLambda = new Lambda(this, 'StoreLambdaId',{
+    const storeLambda = new Lambda(this, 'StoreLambdaId', {
       name: 'store',
       folder: 'handlers/stores',
       handler: 'get-all.handler',
@@ -33,6 +33,6 @@ export class CdkTemplateProjectStack extends cdk.Stack {
     })
 
     const api = new ApiGateway(this)
-    api.addIntergration("GET", "/users", userLambda)
+    api.addIntergration('GET', '/users', userLambda)
   }
 }

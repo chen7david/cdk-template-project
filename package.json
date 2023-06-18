@@ -6,7 +6,7 @@
   },
   "scripts": {
     "build": "rm -rf dist && rm -fr cdk.out && yarn format && tsc && cdk synth",
-    "format": "prettier --write lib/**/*.ts bin/**/*.ts tests/**/*.test.ts",
+    "format": "prettier --write **/**/*.ts",
     "deploy": "yarn build && cdk deploy",
     "watch": "tsc -w",
     "test": "jest",
@@ -23,10 +23,13 @@
     "typescript": "~5.0.4"
   },
   "dependencies": {
+    "@types/validator": "^13.7.17",
     "aws-cdk-lib": "2.84.0",
     "aws-lambda": "^1.0.7",
     "constructs": "^10.0.0",
+    "dynamoose": "^3.2.0",
     "prettier": "^2.8.8",
-    "source-map-support": "^0.5.21"
+    "source-map-support": "^0.5.21",
+    "validator": "^13.9.0"
   }
 }
